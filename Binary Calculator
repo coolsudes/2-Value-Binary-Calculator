@@ -1,0 +1,259 @@
+
+package main;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+
+import java.lang.Math;
+
+public class BinaryCalculator {
+
+	long BIN1, BIN2;
+	static long bin1, dispbin1;
+	static long bin2, dispbin2;
+	static int op;
+	static int[] arrbin1, arrbin2, arrbin3, arrbin4;
+	static int dig1;
+	static int dig2;
+	static int i1, i2, i3, i4, i5, i6, count1, count2;
+	static int r1;
+	static int f1;
+	static int r2;
+	static int f2;
+	static float b;
+	
+
+	
+	public static void getNconvertBin1() {
+		System.out.println("\n");
+		System.out.print("Enter first binary number : ");
+		Scanner BIN1 = new Scanner(System.in);
+		long bin1 = BIN1.nextLong();
+		
+		long temp1 = bin1;
+		long dispbin1 = bin1;
+		
+		while(bin1 > 0) {
+			bin1 = bin1/10;
+			count1 = 0;
+		}
+		
+		while (temp1 > 0) {
+			dig1 =  (int) (temp1 % 10);
+			String a = Integer.toString(dig1);
+			int arrbin1[] = new int[a.length()];
+			temp1 = temp1/10;
+			count1++;
+			String b = Integer.toString(count1);
+			int arrbin2[] = new int[b.length()];
+			
+			for(i1 = 0; i1 < a.length(); i1++) {
+				arrbin1[i1] = a.charAt(i1) - '0';
+				List<String> list = Arrays.asList(a);
+				Iterable<Integer> newList = list.stream().map(s -> Integer.parseInt(a)).collect(Collectors.toList());
+				
+				arrbin2[i1] = b.charAt(i1) - '0';
+				List<String> listb = Arrays.asList(b);
+				Iterable<Integer> newList2 = list.stream().map(s -> Integer.parseInt(b)).collect(Collectors.toList());
+				
+				for(Integer element1 : newList) {
+					if (element1 == 1) {
+						for(Integer element2 : newList2) {
+							int r1 = (int) Math.pow(2, element2-1);
+							String c = Integer.toString(r1);
+							int arrbin3[] = new int[c.length()];
+							
+							for(i3 = 0; i3 < c.length(); i3++) {
+								arrbin3[i3] = c.charAt(i3) - '0';
+								List<String> listc = Arrays.asList(c);
+								Iterable<Integer> newList3 = list.stream().map(s -> Integer.parseInt(c)).collect(Collectors.toList());
+								
+								for(Integer element3 : newList3) {
+									f1 += element3;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		System.out.println("The decimal equivalent of "+ dispbin1 + " is " +f1);
+	}
+
+	
+	
+	public static void getNconvertBin2() {
+		
+		System.out.print("Enter second binary number : ");
+		Scanner BIN2 = new Scanner(System.in);
+		long bin2 = BIN2.nextLong();	
+		
+		long temp2 = bin2;
+		long dispbin2 = bin2;
+
+		while(bin2  > 0) {
+			bin2 = bin2/10;
+			count2 = 0;
+		}
+		while (temp2 > 0) {
+			dig2 = (int) (temp2 % 10);
+			String d = Integer.toString(dig2);
+			int arrbin4[] = new int[d.length()];
+			temp2 = temp2/10;
+			count2++;
+			String e = Integer.toString(count2);
+			int arrbin5[] = new int[e.length()];
+			
+			for(i4 = 0; i4 < d.length(); i4++) {
+				arrbin4[i4] = d.charAt(i4) - '0';
+				List<String> listd = Arrays.asList(d);
+				Iterable<Integer> newList4 = listd.stream().map(s -> Integer.parseInt(d)).collect(Collectors.toList());
+				
+				arrbin5[i4] = e.charAt(i4) - '0';
+				List<String> liste = Arrays.asList(e);
+				Iterable<Integer> newList5 = liste.stream().map(s -> Integer.parseInt(e)).collect(Collectors.toList());
+				
+				for(Integer element4 : newList4) {
+					if (element4 == 1) {
+						for(Integer element2 : newList5) {
+							int r2 = (int) Math.pow(2, element2-1);
+							String f = Integer.toString(r2);
+							int arrbin3[] = new int[f.length()];
+							
+							for(i6 = 0; i6 < f.length(); i6++) {
+								arrbin3[i6] = f.charAt(i6) - '0';
+								List<String> listf = Arrays.asList(f);
+								Iterable<Integer> newList3 = listd.stream().map(s -> Integer.parseInt(f)).collect(Collectors.toList());
+								
+								for(Integer element6 : newList3) {
+									f2 += element6;	
+								}
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		System.out.println("The decimal equivalent of "+ dispbin2 + " is " +f2);
+	}
+	
+
+	
+	public void convertSumToBinary(int num) {
+		int decsum = f1 + f2;
+		
+		int bin[] = new int[40];
+		int x = 0;
+		while(decsum > 0) {
+			bin[x++] = decsum%2;
+			decsum = decsum/2;
+		}
+		for(int y = x-1; y>=0; y--) {
+			int binsum = bin[y];
+			System.out.print(binsum);
+		}
+	}
+	
+	public void convertSubtoBinary(int num) {
+		int decsub = f1 - f2;
+		
+		int bin[] = new int[40];
+		int x = 0;
+		while(decsub > 0) {
+			bin[x++] = decsub%2;
+			decsub = decsub/2;
+		}
+		for(int y = x-1; y>=0; y--) {
+			int binsub = bin[y];
+			System.out.print(binsub);
+		}
+	}
+	
+	public void convertProdtoBinary(int num) {
+		int decprod = f1 * f2;
+		
+		int bin[] = new int[40];
+		int x = 0;
+		while(decprod > 0) {
+			bin[x++] = decprod%2;
+			decprod = decprod/2;
+		}
+		for(int y = x-1; y>=0; y--) {
+			int binprod = bin[y];
+			System.out.print(binprod);
+		}
+	}
+	
+	public void convertDivtoBinary(int num) {
+		try {
+			int decdiv = f1 / f2;
+			
+			int bin[] = new int[40];
+			int x = 0;
+			while(decdiv > 0) {
+				bin[x++] = decdiv%2;
+				decdiv = decdiv/2;
+			}
+			
+			for(int y = x-1; y>=0; y--) {
+				int bindiv = bin[y];
+				System.out.print(bindiv);	
+			}
+		}
+		catch(ArithmeticException e) {
+			System.out.println("Cannot divide by 0");
+		}
+		
+	}
+	
+	public static void selectOperator() {
+		System.out.println("What would you like to do to these values?");
+		System.out.println("1	Add");
+		System.out.println("2	Subtract");
+		System.out.println("3	Multiply");
+		System.out.println("4	Divide");
+		Scanner OP = new Scanner(System.in);
+		op = OP.nextInt();
+		BinaryCalculator obj = new BinaryCalculator();
+		if (op == 1) {
+			System.out.println("The sum in decimal is " + (f1+f2));
+			System.out.print("The sum in binary is ");
+			obj.convertSumToBinary(f1+f2);
+			
+		}else if(op == 2) {
+			System.out.println("The difference in decimal is " + (f1-f2));
+			System.out.print("The difference in binary is ");
+			obj.convertSubtoBinary(f1-f2);
+		
+		}else if(op == 3) {
+			System.out.println("The product in decimal is " + (f1*f2));
+			System.out.print("The product in binary is ");
+			obj.convertProdtoBinary(f1 * f2);
+		
+		}else if(op == 4) {
+			System.out.println("The division in decimal is " + (f1/f2));
+			System.out.print("The division in binary is ");
+			obj.convertDivtoBinary(f1 / f2);
+			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		while (true) {
+			getNconvertBin1();
+			getNconvertBin2();
+			System.out.println(" ");
+			selectOperator();
+		}
+		
+
+		
+	}
+	
+	
+}
